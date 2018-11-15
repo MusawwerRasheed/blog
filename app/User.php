@@ -38,6 +38,37 @@ public function role(){
 
 }
 
+public function setPasswordAttribute($password)
+{
+
+    if (!empty($password)) {
+
+        $this->attributes['password'] = bcrypt($password);
+
+    }
+}
+public function posts(){
+
+    return $this->hasMany('App\Post');
+}
+
+
+//    public function isAdmin(){
+//
+//       if ($this->role->name == 'Administrator'){
+//
+//           return true;
+//
+//       }
+//       return false;
+//
+//
+//
+//    }
+
+
+
+
 
 
 }

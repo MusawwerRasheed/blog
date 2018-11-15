@@ -4,9 +4,9 @@
 
 @section('content')
 
-    <h1> Users</h1>
+    <h1><strong>Users</strong> </h1>
 
-    <table class="table">
+    <table class="table" >
         {{csrf_field()}}
 
         <thead>
@@ -33,7 +33,7 @@
             <td> <img height="50" src="{{$user->photo?$user->photo->file:'no photo for user'}} " alt=""></td>
             <td><a href="{{route('users.edit',$user->id)}}">{{$user->name}}</a></td>
             <td>{{$user->email}}</td>
-            <td>{{$user->role->name}}</td>
+            <td>{{$user->role? $user->role->name:'no role'}}</td>
             <td>{{$user->is_active == 1 ? 'Active' : 'Not Active'}}</td>
             <td>{{$user->created_at->diffForHumans()}}</td>
             <td>{{$user->updated_at->diffForHumans()}}</td>
@@ -44,5 +44,6 @@
 
         </tbody>
     </table>
+
 
 @stop
